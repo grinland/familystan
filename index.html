@@ -8,6 +8,9 @@
       content="A month-long family gathering at Network School in Astana, Kazakhstan. June 1–28, 2027."
     />
     <title>Familystan June 2027</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;700&family=Alegreya+Sans:wght@400;700&family=Manrope:wght@400;700&family=Inter:wght@400;700&family=Source+Sans+3:wght@400;700&family=Figtree:wght@400;700&display=swap">
     <style>
       /* Typography scale adapted from Pico CSS (picocss.com/docs/typography), 18px base */
       * { box-sizing: border-box; }
@@ -60,6 +63,12 @@
         text-align: right;
       }
 
+      .font-picker {
+        position: fixed; bottom: 1rem; right: 1rem; padding: 0.5rem 0.75rem;
+        background: #fff; border: 1px solid #ccc; border-radius: 0.5rem; font-size: 0.875rem;
+      }
+      .font-picker select { font: inherit; }
+
       .section-subtitle { color: #646b79; }
 
       .qa-item {
@@ -76,6 +85,20 @@
   </head>
   <body>
     <main>
+      <div class="font-picker"><label>Font (testing) <select id="font-select"><option value="">System default</option><option value="Onest">Onest</option><option value="Alegreya Sans">Alegreya Sans</option><option value="Manrope">Manrope</option><option value="Inter">Inter</option><option value="Source Sans 3">Source Sans 3</option><option value="Figtree">Figtree</option></select></label></div>
+      <script>
+        (function () {
+          var sel = document.getElementById("font-select");
+          var saved = localStorage.getItem("familystan-font") || "";
+          function apply(f) {
+            document.body.style.fontFamily = f ? '"' + f + '", system-ui, sans-serif' : "";
+          }
+          sel.value = saved; apply(saved);
+          sel.addEventListener("change", function () {
+            localStorage.setItem("familystan-font", sel.value); apply(sel.value);
+          });
+        })();
+      </script>
       <nav class="top-nav"><a href="https://x.com/grin_io">Contact</a></nav>
       <h1>Familystan June 2027</h1>
       <p>
