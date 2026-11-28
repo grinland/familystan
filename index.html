@@ -61,6 +61,12 @@
         font-size: 1rem;
       }
 
+      /* Alegreya Sans runs small: bump its text 10% */
+      html.font-alegreya body,
+      html.font-alegreya p,
+      html.font-alegreya h4 { font-size: 1.1rem; }
+      html.font-alegreya h3 { font-size: 1.5125rem; }
+
       p.about { margin-top: 1.5rem; }
 
       a {
@@ -104,6 +110,7 @@
           var saved = localStorage.getItem("familystan-font") || "Onest";
           function apply(f) {
             document.body.style.fontFamily = f ? '"' + f + '", system-ui, sans-serif' : "";
+            document.documentElement.classList.toggle("font-alegreya", f === "Alegreya Sans");
           }
           if (!sel.querySelector('option[value="' + saved + '"]')) saved = "Onest";
           sel.value = saved; apply(saved);
@@ -121,7 +128,7 @@
       <p class="about">
         Familystan is a month of living differently, together. Dozens of families (tech moms and dads, nomads, and anyone who
         wants to raise their kids in a safe and optimistic world) will gather at
-        Network School in Astana It's part coliving, part
+        Network School in Astana. It's part coliving, part
         unconference, part network state popup. Join us!
       </p>
 
